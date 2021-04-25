@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pageOneFragment">
+
+
+    <fragment
+        android:id="@+id/pageTwoFragment"
+        android:name="com.geo.sampleapplication.ui.fragment.pagetwo.PageTwoFragment"
+        android:label="fragment_page_two"
+        tools:layout="@layout/fragment_page_two" />
+
+    <fragment
+        android:id="@+id/pageOneFragment"
+        android:name="com.geo.sampleapplication.ui.fragment.pageone.PageOneFragment"
+        android:label="fragment_page_one"
+        tools:layout="@layout/fragment_page_one" >
+        <action
+            android:id="@+id/action_pageOneFragment_to_pageTwoFragment"
+            app:destination="@id/pageTwoFragment" />
+        <action
+            android:id="@+id/action_pageOneFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.geo.sampleapplication.ui.fragment.pagetwo.LocationFragment"
+        android:label="LocationFragment" />
+</navigation>

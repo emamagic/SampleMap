@@ -1,0 +1,14 @@
+package com.geo.sampleapplication
+
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+import ir.map.sdk_map.Mapir
+
+@HiltAndroidApp
+class MyApplication: Application(){
+
+    override fun onCreate() {
+        super.onCreate()
+        Mapir.getInstance(applicationContext,"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFhOTY4NjBjYjFjMmIxZWUxMDhjNzIxYjc4MDAwZmJhZjYwOTk1YzFkYzZlZDQ5MjdlNGMxODkzMDFiODEwZmZkZjQ1MjQxNWVmNWNmODEyIn0.eyJhdWQiOiIxMzcwMiIsImp0aSI6ImFhOTY4NjBjYjFjMmIxZWUxMDhjNzIxYjc4MDAwZmJhZjYwOTk1YzFkYzZlZDQ5MjdlNGMxODkzMDFiODEwZmZkZjQ1MjQxNWVmNWNmODEyIiwiaWF0IjoxNjE5MzM1NjI5LCJuYmYiOjE2MTkzMzU2MjksImV4cCI6MTYyMTkyNzYyOSwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.LY7Hn04idcpsDC6LEUMlxdffb3N3yOCrSxYuWDeMAEoucvIOZLsvnOW-0gf-DkBl1qZvddfi2VZAvNSwMxoBfzHLBEPdcIjkMB4mIo2JUtIslbwejYjNNzlh7Iw3ouqe73DPKJnmUZskgUg0tT9mcwhQRbvVG1acflRJk8Rsw3nPM-TVzHcKYs4g-g_Q8W3ZzLd2QrcT70vrdL4HGMC9wzt2zfahhMk67sqsNZqz_L6_IPKL3HSNupb5dYcqRLPXIcWUklkCcyJquRAz-1Ig3lbf8iEHu73jXvmMeO_qK7xGevnIy-mFqDEyVJCUuUMlWWg3oexrkB8vWfZez3pZRA")
+    }
+}

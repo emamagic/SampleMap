@@ -14,27 +14,27 @@ class PageOnViewModel @Inject constructor() : ViewModel() {
     private var mLat: Double? = null
     private var mLon: Double? = null
 
-    private val _taskEvent = SingleLiveEvent<TasksEvent>()
-    val tasksEvent: LiveData<TasksEvent>
-        get() = _taskEvent
+    private val _pageOneState = SingleLiveEvent<PageOneState>()
+    val pageOneState: LiveData<PageOneState>
+        get() = _pageOneState
 
 
     fun onSubmitClicked(lat: String? = "", lon: String? = "") = viewModelScope.launch {
         if (!lat.isNullOrEmpty() && !lon.isNullOrEmpty()){
             mLat = lat.toDouble()
             mLon = lon.toDouble()
-            if (mLat!! > -85 && mLat!! < 85 && mLon!! > -85 && mLon!! < 85) _taskEvent.value = TasksEvent.CheckGPSStatus
-            else _taskEvent.value = TasksEvent.InvalidInput(InputType.INPUT_INVALID)
-        }else _taskEvent.value = TasksEvent.InvalidInput(InputType.INPUT_EMPTY)
+            if (mLat!! > -85 && mLat!! < 85 && mLon!! > -85 && mLon!! < 85) _pageOneState.value = PageOneState.CheckGPSStatus
+            else _pageOneState.value = PageOneState.InvalidInput(InputType.INPUT_INVALID)
+        }else _pageOneState.value = PageOneState.InvalidInput(InputType.INPUT_EMPTY)
 
     }
 
     fun gpsIsEnable() = viewModelScope.launch {
-        _taskEvent.value = TasksEvent.NavigateToPageTwoFragment(mLat!! ,mLon!!)
+        _pageOneState.value = PageOneState.NavigateToPageTwoFragment(mLat!! ,mLon!!)
     }
 
     fun gpsIsDisable() = viewModelScope.launch {
-        _taskEvent.value = TasksEvent.GpsIsDisable
+        _pageOneState.value = PageOneState.GpsIsDisable
     }
 
 

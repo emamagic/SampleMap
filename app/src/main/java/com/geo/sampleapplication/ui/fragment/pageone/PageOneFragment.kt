@@ -37,23 +37,23 @@ class PageOneFragment: BaseFragment<FragmentPageOneBinding>() {
     }
 
     private fun subscribeOnEvent(){
-        viewModel.tasksEvent.observe(viewLifecycleOwner) { task ->
+        viewModel.pageOneState.observe(viewLifecycleOwner) { task ->
             when (task){
-                is TasksEvent.InvalidInput -> Toast.makeText(requireContext(), task.message , Toast.LENGTH_SHORT).show()
+                is PageOneState.InvalidInput -> Toast.makeText(requireContext(), task.message , Toast.LENGTH_SHORT).show()
 
-                is TasksEvent.NavigateToPageTwoFragment -> {
+                is PageOneState.NavigateToPageTwoFragment -> {
                     Bundle().also {
                         it.putParcelable("latlon" ,Latlng(task.lat ,task.lon))
                         Navigation.findNavController(requireView()).navigate(R.id.action_pageOneFragment_to_locationFragment ,it)
                     }
                 }
 
-                is TasksEvent.CheckGPSStatus -> {
+                is PageOneState.CheckGPSStatus -> {
                     if (checkGpsStatus()) viewModel.gpsIsEnable()
                     else viewModel.gpsIsDisable()
                 }
 
-                is TasksEvent.GpsIsDisable -> buildAlertMessageNoGps()
+                is PageOneState.GpsIsDisable -> buildAlertMessageNoGps()
             }
         }
     }
